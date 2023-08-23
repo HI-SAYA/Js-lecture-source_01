@@ -27,5 +27,4 @@ for(let key in student) {
     } else {
         console.log(`상속 property : ${key}`);
     }
-    
 }
