@@ -16,7 +16,7 @@ console.log(msg);
 // 2. 함수 레벨 스코프
 // 함수 외부에서 var 키워드로 선언한 변수는 코드 블록 내에서 선언해도 모두 전역 변수가 된다.
 var i = 0;
-for(var i = 0; i < 10; i++){}
+for (var i = 0; i < 10; i++) { }
 console.log(i);
 
 // 3. 변수 호이스팅
