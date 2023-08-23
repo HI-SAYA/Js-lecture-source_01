@@ -15,3 +15,12 @@ console.log(Object.getPrototypeOf(student) === user);
 Object.setPrototypeOf(student, {});
 console.log(Object.getPrototypeOf(student));
 console.log(Object.getPrototypeOf(student) === user);
+
+// __proto__를 getter, setter로 직접 사용하면 키가 "__proto__" 일 때 에러가 발생하는
+// 의도하지 않은 상황이 생길 수도 있음 => 따라서 메소드 사용 권장
+const obj = Object.create(user);
+let key = "__proto__";
+console.log(obj[key]);
+obj[key] = { test : "새로운 객체 덮어쓰기" };
+console.log(obj[key]);
+console.log(obj.__proto__);
