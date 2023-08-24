@@ -1,6 +1,7 @@
 function Calculator() {
     this.a = 10;
     this.b = 20;
+    
     this.sum = function() {
         return this.a + this.b;
     };
