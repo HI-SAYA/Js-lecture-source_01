@@ -32,9 +32,9 @@ console.log('--------------------------');
 // +는 {1,}과 같다.
 console.log(target.match(/b+/g));
 
+
 // ? : 앞선 패턴이 최대 한 번(0번 포함) 이상 반복 되는 문자열 (반복 검색)
 // ?는 {0,1}과 같다.
-
 target = 'soul seoul';
 console.log(target.match(/se?oul/g));   // e 부분이 있어도 되고 없어도 되는 패턴을 찾아와라.
 
