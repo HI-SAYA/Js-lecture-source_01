@@ -41,7 +41,50 @@
     <button id="btn2">클릭해보세요.</button>
 
     <script>
-        
+        const $btn1 = document.getElementById('btn1');
+
+        $btn1.onclick = function(e) {
+            console.log(this);
+            console.log(e);
+            console.log(e.currentTarget);
+        };
+
+        const $btn2 = document.getElementById('btn2');
+
+        $btn2.addEventListener('click', function(e){
+            console.log(this);
+            console.log(e);
+            console.log(e.currentTarget);
+        });
     </script>
+
+    <h3>화살표 함수</h3>
+    <p>
+        화살표 함수로 정의한 이벤트 핸들러 내부의 this는
+        상위 스코프의 this를 가리킨다. 화살표 함수 자체의 this 바인딩을
+        갖지 않는다는 점에서 유의한다.
+    </p>
+
+    <button id="btn3">클릭해보세요</button>
+    <button id="btn4">클릭해보세요</button>
+
+    <script>
+        const $btn3 = document.getElementById('btn3');
+
+        $btn3.onclick = e => {
+            console.log(this);
+            console.log(e);
+            console.log(e.currentTarget);
+        };
+
+        const $btn4 = document.getElementById('btn4');
+
+        $btn4.addEventListener('click', e => {
+            console.log(this);
+            console.log(e);
+            console.log(e.currentTarget);
+        });
+    </script>
+
 </body>
 </html>
