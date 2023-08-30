@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+/* 1번======================================================= */
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const area1 = document.getElementById("area1");
+  const addButton = document.getElementById("add");
+  const removeButton = document.getElementById("remove");
+  let colorIndex = 0; // 0: 빨간색, 1: 노란색
+  let divCount = 0;
+
+  addButton.addEventListener("click", function () {
+    const newDiv = document.createElement("div");
+    newDiv.classList.add("colored-div");
+    newDiv.style.width = "100px";
+    newDiv.style.height = "100px";
+    newDiv.style.border = "1px solid black";
+    newDiv.style.backgroundColor = colorIndex === 0 ? "red" : "yellow";
+    area1.appendChild(newDiv);
+    colorIndex = 1 - colorIndex; // 번갈아가면서 색 변경
+    divCount++;
+  });
+
+  removeButton.addEventListener("click", function () {
+    if (divCount > 0) {
+      const divs = area1.getElementsByClassName("colored-div");
+      const lastDiv = divs[divs.length - 1];
+      area1.removeChild(lastDiv);
+      divCount--;
+    }
+  });
+});
+
+</script>
+
+
+
+// =======================2 ===============
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const moneyInput = document.querySelector("input[name='money']");
+  const monthsSelect = document.querySelector("select[name='months']");
+  const interestInput = document.querySelector("input[name='interest']");
+  const moneyBefore = document.getElementById("money-before");
+  const moneyAfter = document.getElementById("money-after");
+
+  function updateInterest() {
+    const principal = parseFloat(moneyInput.value);
+    const months = parseFloat(monthsSelect.value);
+    const interestRate = parseFloat(interestInput.value) / 100;
+    const maturityAmount = principal + principal * interestRate * (months / 12);
+    
+    moneyBefore.textContent = principal.toFixed(2);
+    moneyAfter.textContent = maturityAmount.toFixed(2);
+  }
+
+  moneyInput.addEventListener("input", updateInterest);
+  monthsSelect.addEventListener("input", updateInterest);
+  interestInput.addEventListener("input", updateInterest);
+
+  updateInterest(); // 초기화
+});
+
+</script>
+
+
+
+// =============================================3
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const viewDiv = document.getElementById("view");
+
+  viewDiv.addEventListener("click", function () {
+    const text = viewDiv.textContent;
+    const textarea = document.createElement("textarea");
+    textarea.classList.add("edit");
+    textarea.textContent = text;
+    
+    textarea.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        event.preventDefault(); // Enter 키의 기본 동작 취소
+        saveContent(textarea.value);
+      }
+    });
+    
+    textarea.addEventListener("blur", function () {
+      saveContent(textarea.value);
+    });
+
+    viewDiv.replaceWith(textarea);
+    textarea.focus();
+  });
+
+  function saveContent(content) {
+    const viewDiv = document.createElement("div");
+    viewDiv.classList.add("view");
+    viewDiv.textContent = content;
+    
+    const textarea = document.querySelector(".edit");
+    textarea.replaceWith(viewDiv);
+  }
+});
+
+</script>
+</html>
